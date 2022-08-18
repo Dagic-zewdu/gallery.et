@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+import AllContainer from '../components/containers/AllContainer';
 
 const Events = () => {
     return (
-        <View>
-            
-        </View>
+       <AllContainer>
+       </AllContainer>
     );
 }
 

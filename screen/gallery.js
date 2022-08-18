@@ -1,11 +1,11 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
+import AllContainer from '../components/containers/AllContainer';
 
 const Gallery = () => {
     return (
-        <View>
-            
-        </View>
+       <AllContainer>
+       </AllContainer>
     );
 }
 

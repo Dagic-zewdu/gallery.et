@@ -2,10 +2,10 @@ import React from 'react';
 import {View,Text, StyleSheet} from 'react-native';
 import { AntDesign } from '@expo/vector-icons'; 
 import Constants from 'expo-constants'
-const Header = () => {
+const Header = ({title="Gallery.et"}) => {
     return (
         <View style={styles.navbar}>
-            <Text style={styles.logo} >Gallery.et</Text>
+            <Text style={styles.logo} >{title}</Text>
           <AntDesign name="hearto" size={24} color="red" />
         </View>
     );
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     },
     logo :{
        fontSize: 30, 
-       fontStyle: "italic",
+       fontWeight:"bold"
     }
 })
 
