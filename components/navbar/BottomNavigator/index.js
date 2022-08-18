@@ -7,7 +7,9 @@ import Home from '../../../screen/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ionicons } from '@expo/vector-icons';
-
+import { AntDesign } from '@expo/vector-icons'; 
+import { MaterialIcons } from '@expo/vector-icons';
+import AddGallery from '../../../screen/addGallery';
 const Tab=createMaterialBottomTabNavigator()
 
 const BottomNavigator = () => {
@@ -25,7 +27,7 @@ const BottomNavigator = () => {
           title:""
         }} 
         />
-      <Tab.Screen 
+        <Tab.Screen 
       name="gallery" 
       component={Gallery}
       options={{
@@ -34,10 +36,26 @@ const BottomNavigator = () => {
         }} 
       />
       <Tab.Screen 
+      name="AddGallery" 
+      component={AddGallery}
+      options={{
+          tabBarIcon:  ({color})=>(<AntDesign name="pluscircleo" size={20} color={color} />),
+          title:""
+        }} 
+      />
+      <Tab.Screen 
       name="Albums" 
       component={Albums}
       options={{
-          tabBarIcon:  ({color})=>(<Ionicons name="albums" size={24} color={color} />),
+          tabBarIcon:  ({color})=>(<Ionicons name="albums" size={20} color={color} />),
+          title:""
+        }} 
+      />
+      <Tab.Screen 
+      name="Events" 
+      component={Events}
+      options={{
+          tabBarIcon:  ({color})=>(<MaterialIcons name="event" size={20} color={color} />),
           title:""
         }} 
       />

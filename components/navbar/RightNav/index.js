@@ -6,6 +6,7 @@ const RightNav = () => {
     return (
         <View style={styles.navbar}>
           <AntDesign name="hearto" size={24} color="red" />
+          
         </View>
     );
 }
