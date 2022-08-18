@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
        alignItems: "center",
        borderBottomColor:"#ddd",
        justifyContent:"space-between",
-       padding: Constants.statusBarHeight
+       paddingTop: Constants.statusBarHeight,
+       paddingBottom: 10
     },
     logo :{
        fontSize: 30, 
