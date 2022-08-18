@@ -1,15 +1,16 @@
 import * as React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import Albums from '../../../screen/albums';
-import Events from '../../../screen/events';
-import Gallery from '../../../screen/gallery';
-import Home from '../../../screen/Home';
+import Albums from '../../screen/albums';
+import Events from '../../screen/events';
+import Gallery from '../../screen/gallery';
+import Home from '../../screen/Home';
 import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons'; 
 import { MaterialIcons } from '@expo/vector-icons';
-import AddGallery from '../../../screen/addGallery';
+import AddGallery from '../../screen/addGallery';
+
 const Tab=createMaterialBottomTabNavigator()
 
 const BottomNavigator = () => {

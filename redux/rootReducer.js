@@ -2,7 +2,6 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import GalleryReducer from './reducer/gallery';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { persistStore, persistReducer } from 'redux-persist';
 
 const persistConfig = {
@@ -16,6 +15,6 @@ const rootReducer = combineReducers({
     //booksReducer: persistReducer(persistConfig, booksReducer)
 
  });
-
-export const store = createStore(rootReducer, applyMiddleware(thunk));
+const pReducer = persistReducer(persistConfig, rootReducer);
+export const store = createStore(pReducer, applyMiddleware(thunk));
 export const persistor = persistStore(store);
