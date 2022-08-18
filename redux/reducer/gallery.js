@@ -14,7 +14,7 @@ gallery :{
 }
 }
 
-export const GalleryReducer=(state=INITIAL_STATE,{type,payload})=>{
+const GalleryReducer=(state=INITIAL_STATE,{type,payload})=>{
     switch(type){
        case galleryActionType.galleries.FETCH_GALLERIES_START:
         return {
@@ -47,3 +47,5 @@ export const GalleryReducer=(state=INITIAL_STATE,{type,payload})=>{
       return state  
     }
 }
+
+export default GalleryReducer
