@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet} from 'react-native';
+import { StyleSheet,Text} from 'react-native';
 import AllContainer from '../components/containers/AllContainer';
 
 const Albums = () => {
     return (
-        <AllContainer></AllContainer>
+        <AllContainer>
+        </AllContainer>
     );
 }
 
