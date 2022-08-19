@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import AllContainer from '../components/containers/AllContainer';
+import GalleryContainer from '../components/gallery';
+import { fetchGalleriesAsync } from '../redux/actions/gallery/galleries';
 
 const Gallery = () => {
     const dispatch = useDispatch()
@@ -12,6 +16,7 @@ const Gallery = () => {
 
     return (
         <AllContainer>
+            <GalleryContainer />
         </AllContainer>
     );
 }

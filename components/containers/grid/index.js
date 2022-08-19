@@ -1,16 +1,32 @@
-import { globalStyles } from '../../../globalstyles'
-import { View } from 'react-native'
+import { View, Dimensions } from 'react-native';
+import { globalStyles } from '../../../globalstyles';
 
-export const Col = ({ numRows, children }) => {
-    return (
-        <View style={globalStyles[`${numRows}col`]}>{children}</View>
-    )
-}
+export const Container = ({ size, children }) => (
+    <View style={{
+        flex: size, // the number of columns you want to devide the screen into
+        marginHorizontal: "auto",
+        width: Dimensions.get('window').width,
 
-export const Row = ({ children }) => (
-    <View style={globalStyles.row}>{children}</View>
+    }}>
+        {children}
+    </View>
 )
 
-export const Container = ({ children }) => (
-    <View style={globalStyles.app}>{children}</View>
-) 
+export const Row = ({ children }) =>
+    (<View style={{ flexDirection: "row" }}> {children}</View>)
+
+export const Col = ({ numRows, children }) => (
+    <View style={{
+        borderWidth: 0.1,
+        flex: numRows,
+        maxWidth: `${100 / numRows}%`
+    }}>
+        {children}
+    </View>
+)
+
+export const FlatCol = ({ numRows, children }) => (
+    <View>
+        {children}
+    </View>
+)

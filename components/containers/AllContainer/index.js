@@ -1,20 +1,22 @@
-import { View,ScrollViewComponent } from 'react-native'
+import { View, ScrollViewComponent, ScrollView } from 'react-native'
 import React from 'react'
-import {StyleSheet} from "react-native"
+import { StyleSheet } from "react-native"
 import Header from '../../navbar'
 
-export default function AllContainer({children}) {
+export default function AllContainer({ children }) {
   return (
     <View style={styles.container}>
-       <Header />
-      {children}
-    </View>   
+      <Header />
+      <ScrollView>
+        {children}
+      </ScrollView>
+    </View>
   )
 }
 
-const styles= StyleSheet.create({
-    container :{
-       flex:1,
-       backgroundColor: "#fff",
-    }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+  }
 })

@@ -1,8 +1,8 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
-export const globalStyles = StyleSheet.create({
+export const globalStyles = (size = 4) => StyleSheet.create({
     app: {
-        flex: 4, // the number of columns you want to devide the screen into
+        flex: size, // the number of columns you want to devide the screen into
         marginHorizontal: "auto",
         width: Dimensions,
     },
