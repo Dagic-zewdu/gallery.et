@@ -12,7 +12,6 @@ const HomeContainer = () => {
     useEffect(() => {
         setImages(data?.map(({ fileurl }) => fileurl))
     }, [data])
-    console.log(images)
     return (
         <View>
             {
