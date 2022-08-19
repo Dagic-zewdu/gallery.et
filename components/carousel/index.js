@@ -1,11 +1,11 @@
 import React from 'react';
-import {Dimensions,View, StyleSheet} from 'react-native';
+import { Dimensions, View, StyleSheet } from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 
-const CustomCarousel = ({data,onSnapToItem=()=>{},children}) => {
-     const width = Dimensions.get('window').width;
+const CustomCarousel = ({ data, onSnapToItem = () => { }, children }) => {
+    const width = Dimensions.get('window').width;
     return (
-         <View style={{ flex: 1 }}>
+        <View style={{ flex: 1 }}>
             <Carousel
                 loop
                 width={width}
@@ -20,6 +20,5 @@ const CustomCarousel = ({data,onSnapToItem=()=>{},children}) => {
     );
 }
 
-const styles = StyleSheet.create({})
 
 export default CustomCarousel;
