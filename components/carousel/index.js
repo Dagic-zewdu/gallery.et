@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {Dimensions,View, StyleSheet} from 'react-native';
 import Carousel from 'react-native-reanimated-carousel';
 
-const CustomCarousel = ({children,data}) => {
+const CustomCarousel = ({data,onSnapToItem=()=>{},children}) => {
+     const width = Dimensions.get('window').width;
     return (
          <View style={{ flex: 1 }}>
             <Carousel
@@ -12,7 +13,7 @@ const CustomCarousel = ({children,data}) => {
                 autoPlay={true}
                 data={data}
                 scrollAnimationDuration={1000}
-                onSnapToItem={(index) => console.log('current index:', index)}
+                onSnapToItem={onSnapToItem}
                 renderItem={({ index }) => (children)}
             />
         </View>
