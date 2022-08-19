@@ -1,4 +1,4 @@
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, TouchableOpacity } from 'react-native';
 import { globalStyles } from '../../../globalstyles';
 
 export const Container = ({ size, children }) => (
@@ -15,18 +15,33 @@ export const Container = ({ size, children }) => (
 export const Row = ({ children }) =>
     (<View style={{ flexDirection: "row" }}> {children}</View>)
 
-export const Col = ({ numRows, children }) => (
-    <View style={{
+export const Col = ({ numRows, children, item, onPress = () => { } }) => (
+    <TouchableOpacity style={{
         borderWidth: 0.1,
         flex: numRows,
         maxWidth: `${100 / numRows}%`
-    }}>
+    }}
+        delayPressIn={1000}
+        onPress={() => onPress(item)}
+    >
+
         {children}
-    </View>
+    </TouchableOpacity>
 )
 
-export const FlatCol = ({ numRows, children }) => (
-    <View>
+export const FlatCol = ({ item, children, onPress }) => (
+    <TouchableOpacity style={{
+        flex: 1,
+        maxWidth: "100%", // 100% devided by the number of rows you want
+        alignItems: "center",
+        padding: 2,
+        borderWidth: 0.1,
+        borderColor: "#fff"
+    }}
+        delayPressIn={1000}
+        onPress={() => onPress(item)}
+
+    >
         {children}
-    </View>
+    </TouchableOpacity>
 )
