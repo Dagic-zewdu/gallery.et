@@ -13,7 +13,7 @@ const GalleryContainer = () => {
                     data.slice(0, 2).map(({ _id, fileurl: uri }, index) => {
                         return (
                             <Col numRows={2} key={_id} >
-                                <Image source={{ uri }} style={{ width: "98%", height: 200 }} />
+                                <Image source={{ uri }} style={{ width: "98%", height: 200, borderRadius: 10 }} />
                             </Col>
                         )
                     }
@@ -25,7 +25,10 @@ const GalleryContainer = () => {
                     data.slice(3, 5).map(({ _id, fileurl: uri }, index) => {
                         return (
                             <Col item={_id} numRows={index === 0 ? 3 : 1} key={_id} >
-                                <Image source={{ uri }} style={{ width: "98%", height: 200 }} />
+                                <Image source={{ uri }} style={{
+                                    width: "98%",
+                                    height: 200, borderRadius: 10
+                                }} />
                             </Col>
                         )
                     }
@@ -38,7 +41,8 @@ const GalleryContainer = () => {
 
                 renderItem={({ item, index }) =>
                     <FlatCol key={index} item={item} onPress={(item) => console.log(item._id)}>
-                        <Image source={{ uri: item.fileurl }} style={{ width: "100%", height: 200 }} />
+                        <Image source={{ uri: item.fileurl }}
+                            style={{ width: "100%", height: 200, borderRadius: 10 }} />
 
                     </FlatCol>
                 }
