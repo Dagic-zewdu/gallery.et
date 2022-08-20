@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import AllContainer from '../components/containers/AllContainer';
 import GalleryContainer from '../components/gallery';
+import GalleriesSkeleton from '../components/skeleton/Gallery/galleries';
 import { fetchGalleriesAsync } from '../redux/actions/gallery/galleries';
 import { Donothing } from '../utils';
 
@@ -17,7 +18,6 @@ const Gallery = () => {
         dispatch(fetchGalleriesAsync(page))
     }, [])
     const loadMore = () => loadmore ? dispatch(fetchGalleriesAsync(page)) : Donothing()
-    console.log(loadmore, page)
     return (
         <AllContainer onScrollEnd={() => loadMore()}>
             <GalleryContainer />

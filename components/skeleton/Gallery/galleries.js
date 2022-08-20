@@ -6,19 +6,18 @@ import { FlatCol } from '../../containers/grid';
 const GalleriesSkeleton = () => {
     return (
         <SkeletonPlaceholder>
-            <FlatList
-                data={[1, 2, 3, 4, 5, 6]}
-                numColumns={3}
-
-                renderItem={({ item, index }) =>
-                    <FlatCol key={index} item={item} onPress={() => { }}>
-                        <SkeletonPlaceholder.Item
-                            style={{ width: "100%", height: 200, borderRadius: 10 }} />
-
-                    </FlatCol>
-                }
-                keyExtractor={(item) => item}
-            />
+            <SkeletonPlaceholder.Item flexDirection="row" alignItems="center">
+                <SkeletonPlaceholder.Item width={60} height={60} borderRadius={50} />
+                <SkeletonPlaceholder.Item marginLeft={20}>
+                    <SkeletonPlaceholder.Item width={120} height={20} borderRadius={4} />
+                    <SkeletonPlaceholder.Item
+                        marginTop={6}
+                        width={80}
+                        height={20}
+                        borderRadius={4}
+                    />
+                </SkeletonPlaceholder.Item>
+            </SkeletonPlaceholder.Item>
         </SkeletonPlaceholder>
 
     );
