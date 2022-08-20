@@ -6,3 +6,5 @@ export function handleInfinityScroll(event) {
     if (Math.ceil(mHeight + Y) >= cSize) return true;
     return false;
 }
+
+export const Donothing = () => { }

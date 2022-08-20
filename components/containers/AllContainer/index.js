@@ -2,12 +2,18 @@ import { View, ScrollViewComponent, ScrollView } from 'react-native'
 import React from 'react'
 import { StyleSheet } from "react-native"
 import Header from '../../navbar'
+import { handleInfinityScroll } from '../../../utils'
 
 export default function AllContainer({ children, onScrollEnd = () => { } }) {
   return (
     <View style={styles.container}>
       <Header />
-      <ScrollView onMomentumScrollEnd={onScrollEnd} >
+      <ScrollView onScroll={(event) => {
+        if (handleInfinityScroll(event)) {
+          onScrollEnd()
+        }
+      }}
+      >
         {children}
       </ScrollView>
     </View >
