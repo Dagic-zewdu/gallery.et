@@ -6,7 +6,6 @@ import { Container, Row, Col, FlatCol } from '../containers/grid';
 const GalleryContainer = () => {
     const { galleries } = useSelector(state => state.gallery)
     const { data } = galleries
-
     return (
         <Container size={data.length}>
             <View style={{ flexDirection: "row" }}>

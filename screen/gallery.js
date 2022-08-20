@@ -15,7 +15,7 @@ const Gallery = () => {
     const { loading, error } = gallery
 
     return (
-        <AllContainer>
+        <AllContainer onScrollEnd={() => console.log("scroll is ended")}>
             <GalleryContainer />
         </AllContainer>
     );

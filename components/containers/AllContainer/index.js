@@ -3,14 +3,14 @@ import React from 'react'
 import { StyleSheet } from "react-native"
 import Header from '../../navbar'
 
-export default function AllContainer({ children }) {
+export default function AllContainer({ children, onScrollEnd = () => { } }) {
   return (
     <View style={styles.container}>
       <Header />
-      <ScrollView>
+      <ScrollView onMomentumScrollEnd={onScrollEnd} >
         {children}
       </ScrollView>
-    </View>
+    </View >
   )
 }
 
