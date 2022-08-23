@@ -4,12 +4,14 @@ import { useSelector } from 'react-redux';
 
 const HomeContainer = () => {
     const { galleries } = useSelector(state => state.gallery)
+    const [images, setImages] = useState([])
     const { data } = galleries
     useEffect(() => {
         setImages(data?.map(({ fileurl }) => fileurl))
     }, [data])
+
     useEffect(() => {
-        setInterval(() =>)
+        setInterval(() => { }, 3000)
     }, [])
     return (
         <View>
