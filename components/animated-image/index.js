@@ -4,7 +4,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
 const AnimatedImage = ({ uri,
     onView = () => { },
-    onLike = () => { }
+    onLike = () => { },
+    likes
 }) => {
     const width = new Animated.Value(360);
     const height = new Animated.Value(600);
