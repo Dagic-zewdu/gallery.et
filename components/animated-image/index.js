@@ -77,8 +77,8 @@ const styles = StyleSheet.create({
     },
     logoContainer: {
         flex: 1,
-        alignItems: "flex-end",
-        paddingTop: 48,
+        flexDirection: "row",
+        justifyContent: "space-around",
         backgroundColor: 'rgba(11, 56, 82, 0.3)',
     },
     logo: {
