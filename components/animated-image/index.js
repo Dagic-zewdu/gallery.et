@@ -1,17 +1,20 @@
 import React, { useEffect } from 'react';
-import { View, Text, StyleSheet, Image, Animated } from 'react-native';
+import { View, Text, StyleSheet, Image, Animated, Dimensions, ImageBackground } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
+
+const bg = "https://img.freepik.com/free-vector/blurred-background-with-light-colors_1034-245.jpg?w=2000"
+
 const AnimatedImage = ({ uri = "",
     onView = () => { },
     onLike = () => { }, likes = 0, tags = "", title = "" }) => {
-    const width = new Animated.Value(360);
-    const height = new Animated.Value(600);
+    const width = new Animated.Value(Dimensions.get('window').width);
+    const height = new Animated.Value(Dimensions.get('window').height);
     useEffect(() => {
         Animated.timing(
             width, // The animated value to drive
             {
-                toValue: 360, // Animate to opacity: 1 (opaque)
+                toValue: Dimensions.get('window').width, // Animate to opacity: 1 (opaque)
                 duration: 450, // Make it take a while
                 useNativeDriver: false,
             },
@@ -19,24 +22,27 @@ const AnimatedImage = ({ uri = "",
         Animated.timing(
             height, // The animated value to drive
             {
-                toValue: 750, // Animate to opacity: 1 (opaque)
+                toValue: Dimensions.get('window').height + 200, // Animate to opacity: 1 (opaque)
                 duration: 10000, // Make it take a while
                 useNativeDriver: false,
             },
         ).start(); // Starts the animation
-    }, []);
+    }, [uri]);
 
     return (
-        <View style={styles.container}
-        >
-            <Animated.Image
-                source={{ uri }}
-                style={{
-                    width: width,
-                    height: height,
-                    position: 'absolute',
-                }}
-            />
+        <ImageBackground source={{ uri: bg }} style={styles.container}
+        >{
+                uri &&
+
+                <Animated.Image
+                    source={{ uri }}
+                    style={{
+                        width: width,
+                        height: height,
+                        position: 'absolute',
+                    }}
+                />
+            }
             <View style={styles.logoContainer}>
                 <Text style={styles.textStyle}>
                     {title}
@@ -55,7 +61,7 @@ const AnimatedImage = ({ uri = "",
                     </View>
                 </View>
             </View>
-        </View>
+        </ImageBackground>
     );
 };
 
@@ -66,11 +72,12 @@ const styles = StyleSheet.create({
         flex: 1,
         position: 'relative',
         backgroundColor: '#2F7ECC',
+        height: Dimensions.get('window').height,
     },
     flex: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "between"
+        justifyContent: "space-between"
     },
     logoContainer: {
         flex: 1,

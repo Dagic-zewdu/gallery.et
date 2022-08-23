@@ -5,7 +5,7 @@ const INITIAL_STATE = {
         loading: true,
         data: [],
         error: false,
-        page: 0,
+        page: 1,
         loadMore: true
     },
     gallery: {

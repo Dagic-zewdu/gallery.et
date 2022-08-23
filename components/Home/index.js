@@ -10,18 +10,16 @@ const HomeContainer = (props) => {
     const [image, setImage] = useState({})
     const { data } = galleries
     useEffect(() => {
-        setImages(data?.map(({ fileurl }) => fileurl))
+        setImages(data?.slice(3, data.length).map(({ fileurl }) => fileurl))
     }, [data])
+
     useEffect(() => {
-        setImage(data.find(i => i.fileurl === image[index]))
-    }, [index, image])
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex(Math.floor(Math.random() * data.length))
-        }, 3000)
-        return () => clearInterval(interval)
-    }, [])
-    console.log(index, image)
+        if (data.length) {
+            setInterval(() => {
+                setIndex(Math.floor(Math.random() * data.length))
+            }, 10000)
+        }
+    }, [data])
     return (
         <AnimatedImage uri={images[index]} title={image?.title} />
     );
