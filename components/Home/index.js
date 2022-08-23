@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 import AnimatedImage from '../animated-image';
 
 const HomeContainer = (props) => {
-    console.log(props)
     const { galleries } = useSelector(state => state.gallery)
     const [images, setImages] = useState([])
     const [index, setIndex] = useState(0)
@@ -13,16 +12,18 @@ const HomeContainer = (props) => {
     useEffect(() => {
         setImages(data?.map(({ fileurl }) => fileurl))
     }, [data])
-
+    useEffect(() => {
+        setImage(data.find(i => i.fileurl === image[index]))
+    }, [index, image])
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex(Math.floor(Math.random() * data.length))
         }, 3000)
         return () => clearInterval(interval)
     }, [])
-    console.log(index)
+    console.log(index, image)
     return (
-        <AnimatedImage uri={images[index]} />
+        <AnimatedImage uri={images[index]} title={image?.title} />
     );
 }
 
