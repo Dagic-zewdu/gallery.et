@@ -5,7 +5,8 @@ import { AntDesign } from '@expo/vector-icons';
 const AnimatedImage = ({ uri,
     onView = () => { },
     onLike = () => { },
-    likes
+    likes,
+    tags
 }) => {
     const width = new Animated.Value(360);
     const height = new Animated.Value(600);
