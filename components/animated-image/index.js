@@ -45,13 +45,14 @@ const AnimatedImage = ({ uri,
                 <Text>{tags}</Text>
                 <View style={styles.flex}>
                     <Text>{likes} likes </Text>
-                    <View>
-                        <TouchableOpacity onPress={onView}>
+                    <View style={styles.flex}>
+                        <TouchableOpacity onPress={onLike}>
                             <AntDesign name="hearto" size={24} color="red" />
                         </TouchableOpacity>
-                        {" "}
 
-                        <AntDesign name="eyeo" size={24} color="black" />
+                        <TouchableOpacity onPress={onView}>
+                            <AntDesign name="eyeo" size={24} color="black" />
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
