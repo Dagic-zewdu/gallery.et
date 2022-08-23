@@ -27,8 +27,7 @@ const AnimatedImage = ({ uri,
     }, []);
 
     return (
-        <TouchableOpacity style={styles.container}
-            delayPressIn={1000}
+        <View style={styles.container}
             onPress={onPress}
         >
             <Animated.Image
@@ -44,12 +43,13 @@ const AnimatedImage = ({ uri,
                     {title}
                 </Text>
                 <Text>{tags}</Text>
-                <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "between" }}>
+                <View style={styles.flex}>
                     <Text>{likes} likes </Text>
                     <View>
-
+                        <Toachable
                         <AntDesign name="hearto" size={24} color="red" />
                         {" "}
+
                         <AntDesign name="eyeo" size={24} color="black" />
                     </View>
                 </View>
