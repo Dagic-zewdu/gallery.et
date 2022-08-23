@@ -55,7 +55,7 @@ const AnimatedImage = ({ uri,
                     </View>
                 </View>
             </View>
-        </TouchableOpacity>
+        </View>
     );
 };
 
