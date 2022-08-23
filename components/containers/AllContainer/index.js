@@ -4,10 +4,10 @@ import { StyleSheet } from "react-native"
 import Header from '../../navbar'
 import { handleInfinityScroll } from '../../../utils'
 
-export default function AllContainer({ children, title, onScrollEnd = () => { } }) {
+export default function AllContainer({ children, header = true, title, onScrollEnd = () => { } }) {
   return (
     <View style={styles.container}>
-      <Header title={title} />
+      {header && <Header title={title} />}
       <ScrollView onScroll={(event) => {
         if (handleInfinityScroll(event)) {
           onScrollEnd()

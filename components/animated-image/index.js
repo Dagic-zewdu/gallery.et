@@ -2,31 +2,51 @@ import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Animated, Dimensions, ImageBackground } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
+import Constants from 'expo-constants'
 
 const bg = "https://img.freepik.com/free-vector/blurred-background-with-light-colors_1034-245.jpg?w=2000"
 
 const AnimatedImage = ({ uri = "",
+    id = "",
     onView = () => { },
-    onLike = () => { }, likes = 0, tags = "", title = "" }) => {
+    onLike = () => { }, likes = 0, tags = "", title = "",
+    onStop = () => { }
+}) => {
     const width = new Animated.Value(Dimensions.get('window').width);
     const height = new Animated.Value(Dimensions.get('window').height);
+    const paddingTop = new Animated.Value(Constants.statusBarHeight);
+
     useEffect(() => {
         Animated.timing(
             width, // The animated value to drive
             {
                 toValue: Dimensions.get('window').width, // Animate to opacity: 1 (opaque)
-                duration: 450, // Make it take a while
+                duration: 0, // Make it take a while
                 useNativeDriver: false,
+
             },
         ).start(); // Starts the animation
         Animated.timing(
+            paddingTop, // The animated value to drive
+            {
+                toValue: 250, // Animate to opacity: 1 (opaque)
+                duration: 5000, // Make it take a while
+                useNativeDriver: false,
+
+            },
+        ).start();
+        Animated.timing(
             height, // The animated value to drive
             {
-                toValue: Dimensions.get('window').height + 200, // Animate to opacity: 1 (opaque)
-                duration: 10000, // Make it take a while
+                toValue: Dimensions.get('window').height - 400, // Animate to opacity: 1 (opaque)
+                duration: 5000, // Make it take a while
                 useNativeDriver: false,
             },
-        ).start(); // Starts the animation
+        ).start(({ finished }) => {
+            if (finished) {
+                onStop(id)
+            }
+        }); // Starts the animation: ;
     }, [uri]);
 
     return (
@@ -40,12 +60,13 @@ const AnimatedImage = ({ uri = "",
                         width: width,
                         height: height,
                         position: 'absolute',
+                        marginTop: paddingTop
                     }}
                 />
             }
             <View style={styles.logoContainer}>
                 <Text style={styles.textStyle}>
-                    {title}
+                    {title} dsfds
                 </Text>
                 <Text>{tags}</Text>
                 <View style={styles.flex}>
@@ -69,7 +90,6 @@ export default AnimatedImage;
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         position: 'relative',
         backgroundColor: '#2F7ECC',
         height: Dimensions.get('window').height,
@@ -93,5 +113,6 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
         textAlign: 'center',
+        paddingTop: Constants.statusBarHeight
     },
 });

@@ -5,23 +5,33 @@ import AnimatedImage from '../animated-image';
 
 const HomeContainer = (props) => {
     const { galleries } = useSelector(state => state.gallery)
+    const { data } = galleries
     const [images, setImages] = useState([])
     const [index, setIndex] = useState(0)
-    const [image, setImage] = useState({})
-    const { data } = galleries
+    const [image, setImage] = useState(data[0])
+
     useEffect(() => {
         setImages(data?.slice(3, data.length).map(({ fileurl }) => fileurl))
     }, [data])
-
-    useEffect(() => {
+    const changeImage = (id) => {
+        console.log(id)
         if (data.length) {
-            setInterval(() => {
-                setIndex(Math.floor(Math.random() * data.length))
-            }, 10000)
+            if (data.length === index) {
+                return setIndex(0)
+            }
+            return setIndex(s => (s + 1))
         }
-    }, [data])
+    }
+    useEffect(() => {
+        if (data.length)
+            setImage(s => (data[index]))
+    }, [index, data])
+
     return (
-        <AnimatedImage uri={images[index]} title={image?.title} />
+        <AnimatedImage uri={image?.fileurl}
+            tags={image?.tags?.join(",")}
+            onStop={(id) => changeImage(id)}
+            title={image?.title} id={image?._id} />
     );
 }
 
