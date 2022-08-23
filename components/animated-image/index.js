@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Animated } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
-const AnimatedImage = ({ uri, onView = () => { }, onLike = () => { }, likes, tags }) => {
+const AnimatedImage = ({ uri, onView = () => { }, onLike = () => { }, likes, tags, title }) => {
     const width = new Animated.Value(360);
     const height = new Animated.Value(600);
     useEffect(() => {

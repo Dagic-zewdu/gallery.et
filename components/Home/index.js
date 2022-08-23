@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { useSelector } from 'react-redux';
+import AnimatedImage from '../animated-image';
 
-const HomeContainer = () => {
+const HomeContainer = (props) => {
+    console.log(props)
     const { galleries } = useSelector(state => state.gallery)
     const [images, setImages] = useState([])
     const [index, setIndex] = useState(0)
@@ -17,10 +19,9 @@ const HomeContainer = () => {
         }, 3000)
         return () => clearInterval(interval)
     }, [])
+    console.log(index)
     return (
-        <View>
-
-        </View>
+        <AnimatedImage uri={images[index]} />
     );
 }
 
