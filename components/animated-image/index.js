@@ -46,7 +46,7 @@ const AnimatedImage = ({ uri,
                 <View style={styles.flex}>
                     <Text>{likes} likes </Text>
                     <View>
-                        <TouchableOpacity onPress={onV}>
+                        <TouchableOpacity onPress={onView}>
                             <AntDesign name="hearto" size={24} color="red" />
                         </TouchableOpacity>
                         {" "}
