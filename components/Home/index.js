@@ -8,6 +8,7 @@ const HomeContainer = (props) => {
     const { galleries } = useSelector(state => state.gallery)
     const [images, setImages] = useState([])
     const [index, setIndex] = useState(0)
+    const [image, setImage] = useState({})
     const { data } = galleries
     useEffect(() => {
         setImages(data?.map(({ fileurl }) => fileurl))
