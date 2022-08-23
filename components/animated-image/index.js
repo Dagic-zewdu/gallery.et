@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, Image, Animated } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
+import { AntDesign } from '@expo/vector-icons';
 const AnimatedImage = ({ uri,
     onPress = () => { },
 }) => {
@@ -47,7 +47,10 @@ const AnimatedImage = ({ uri,
                 <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "between" }}>
                     <Text>{likes} likes </Text>
                     <View>
+
                         <AntDesign name="hearto" size={24} color="red" />
+                        {" "}
+                        <AntDesign name="eyeo" size={24} color="black" />
                     </View>
                 </View>
             </View>
@@ -62,6 +65,11 @@ const styles = StyleSheet.create({
         flex: 1,
         position: 'relative',
         backgroundColor: '#2F7ECC',
+    },
+    flex: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "between"
     },
     logoContainer: {
         flex: 1,
