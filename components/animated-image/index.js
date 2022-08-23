@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, Animated } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
 const AnimatedImage = ({ uri,
-    onPress = () => { },
+    onView = () => { },
 }) => {
     const width = new Animated.Value(360);
     const height = new Animated.Value(600);
@@ -28,7 +28,6 @@ const AnimatedImage = ({ uri,
 
     return (
         <View style={styles.container}
-            onPress={onPress}
         >
             <Animated.Image
                 source={{ uri }}
