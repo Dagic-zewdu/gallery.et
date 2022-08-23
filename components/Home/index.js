@@ -12,7 +12,10 @@ const HomeContainer = () => {
     }, [data])
 
     useEffect(() => {
-        setInterval(() => { }, 3000)
+        const interval = setInterval(() => {
+            setIndex(Math.floor(Math.random() * data.length))
+        }, 3000)
+        return () => clearInterval(interval)
     }, [])
     return (
         <View>
