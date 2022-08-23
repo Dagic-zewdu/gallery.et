@@ -19,7 +19,7 @@ const Gallery = () => {
     }, [])
     const loadMore = () => loadmore ? dispatch(fetchGalleriesAsync(page)) : Donothing()
     return (
-        <AllContainer onScrollEnd={() => loadMore()}>
+        <AllContainer title="Images" onScrollEnd={() => loadMore()}>
             <GalleryContainer />
         </AllContainer>
     );
