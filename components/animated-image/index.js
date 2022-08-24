@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Image, Animated, Dimensions, ImageBackground } 
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
 import Constants from 'expo-constants'
-
+import { useRoute } from '@react-navigation/native';
 const bg = "https://img.freepik.com/free-vector/blurred-background-with-light-colors_1034-245.jpg?w=2000"
 
 const AnimatedImage = ({ uri = "",
@@ -15,7 +15,8 @@ const AnimatedImage = ({ uri = "",
     const width = new Animated.Value(Dimensions.get('window').width);
     const height = new Animated.Value(Dimensions.get('window').height);
     const paddingTop = new Animated.Value(Constants.statusBarHeight);
-
+    const route = useRoute();
+    console.log(route)
     useEffect(() => {
         Animated.timing(
             width, // The animated value to drive
@@ -47,7 +48,7 @@ const AnimatedImage = ({ uri = "",
                 onStop(id)
             }
         }); // Starts the animation: ;
-    }, [uri]);
+    }, [uri, route.name]);
 
     return (
         <ImageBackground source={{ uri: bg }} style={styles.container}
@@ -66,7 +67,7 @@ const AnimatedImage = ({ uri = "",
             }
             <View style={styles.logoContainer}>
                 <Text style={styles.textStyle}>
-                    {title} dsfds
+                    {title}
                 </Text>
                 <Text>{tags}</Text>
                 <View style={styles.flex}>
@@ -104,6 +105,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-around",
         backgroundColor: 'rgba(11, 56, 82, 0.3)',
+        paddingTop: Constants.statusBarHeight
     },
     logo: {
         width: 100,
@@ -111,8 +113,7 @@ const styles = StyleSheet.create({
     },
     textStyle: {
         fontSize: 20,
-        color: 'white',
+        color: '#fff',
         textAlign: 'center',
-        paddingTop: Constants.statusBarHeight
     },
 });
