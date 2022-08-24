@@ -30,14 +30,34 @@ const HomeContainer = (props) => {
         }
         return setIndex(index - 1)
     }
+    const changeToNext = () => {
+        if (index === data.length) {
+            return setIndex(0)
+        }
+        return setIndex(index + 1)
+    }
     useEffect(() => {
         if (data.length)
             setImage(s => (data[index]))
     }, [index, data])
     const scrollYRef = useRef(0)
+    console.log(index)
     return (
         <ScrollView nestedScrollEnabled
-            onScroll={event => handleScrollUpdown(event, changeToPrev)}
+            onScroll={event => {
+                const currentYPosition = event.nativeEvent.contentOffset.y
+                const oldPosition = scrollYRef.current
+
+                if (oldPosition < currentYPosition) {
+                    // we scrolled down
+                    changeToNext()
+                } else {
+                    // we scrolled up
+                    changeToPrev()
+                }
+                scrollYRef.current = currentYPosition
+            }}
+
         >
             <AnimatedImage uri={image?.fileurl}
                 tags={image?.tags?.join(",")}
