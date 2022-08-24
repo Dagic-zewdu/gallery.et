@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, ScrollView } from 'react-native';
 import { useSelector } from 'react-redux';
 import AnimatedImage from '../animated-image';
 
@@ -14,7 +14,6 @@ const HomeContainer = (props) => {
         setImages(data?.slice(3, data.length).map(({ fileurl }) => fileurl))
     }, [data])
     const changeImage = (id) => {
-        console.log(id)
         if (data.length) {
             if (data.length === index) {
                 return setIndex(0)
