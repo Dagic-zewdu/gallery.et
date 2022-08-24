@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { event } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
+import { handleScrollUpdown } from '../../utils';
 import AnimatedImage from '../animated-image';
 
 const HomeContainer = (props) => {
@@ -33,10 +34,10 @@ const HomeContainer = (props) => {
         if (data.length)
             setImage(s => (data[index]))
     }, [index, data])
-
+    const scrollYRef = useRef(0)
     return (
         <ScrollView nestedScrollEnabled
-            onScroll={ }
+            onScroll={event => handleScrollUpdown(event, changeToPrev)}
         >
             <AnimatedImage uri={image?.fileurl}
                 tags={image?.tags?.join(",")}

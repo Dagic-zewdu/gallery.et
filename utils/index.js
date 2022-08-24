@@ -9,7 +9,7 @@ export function handleInfinityScroll(event) {
 
 export const Donothing = () => { }
 
-export const handleScrollUpdown = (event, scrollUp = () => { }, scrollDown = () => { }) => {
+export const handleScrollUpdown = (event, scrollYRef, scrollUp = () => { }, scrollDown = () => { }) => {
     const currentYPosition = event.nativeEvent.contentOffset.y
     const oldPosition = scrollYRef.current
 
