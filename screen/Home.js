@@ -5,8 +5,7 @@ import HomeContainer from '../components/Home';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchGalleriesAsync } from '../redux/actions/gallery/galleries';
 
-const Home = ({ navigate }) => {
-  console.log(navigate)
+const Home = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchGalleriesAsync())
