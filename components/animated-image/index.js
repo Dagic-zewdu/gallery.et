@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, Image, Animated, Dimensions, ImageBackground } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AntDesign } from '@expo/vector-icons';
@@ -9,14 +9,14 @@ const bg = "https://img.freepik.com/free-vector/blurred-background-with-light-co
 const AnimatedImage = ({ uri = "",
     id = "",
     onView = () => { },
-    onLike = () => { }, likes = 0, tags = "", title = "",
+    onLike = () => { }, likes = 0, views = 0, tags = "", title = "",
     onStop = () => { }
 }) => {
     const width = new Animated.Value(Dimensions.get('window').width);
     const height = new Animated.Value(Dimensions.get('window').height);
     const paddingTop = new Animated.Value(Constants.statusBarHeight);
     const route = useRoute();
-    console.log(route)
+
     useEffect(() => {
         Animated.timing(
             width, // The animated value to drive
@@ -48,11 +48,13 @@ const AnimatedImage = ({ uri = "",
                 onStop(id)
             }
         }); // Starts the animation: ;
-    }, [uri, route.name]);
+    }, [uri, route.key]);
 
     return (
         <ImageBackground source={{ uri: bg }} style={styles.container}
-        >{
+        >
+
+            {
                 uri &&
 
                 <Animated.Image
@@ -67,16 +69,15 @@ const AnimatedImage = ({ uri = "",
             }
             <View style={styles.logoContainer}>
                 <Text style={styles.textStyle}>
-                    {title}
+                    {title} {tags}
                 </Text>
-                <Text>{tags}</Text>
                 <View style={styles.flex}>
-                    <Text>{likes} likes </Text>
+
+                    <Text>{likes} likes {views} views </Text>
                     <View style={styles.flex}>
                         <TouchableOpacity onPress={onLike}>
                             <AntDesign name="hearto" size={24} color="red" />
                         </TouchableOpacity>
-
                         <TouchableOpacity onPress={onView}>
                             <AntDesign name="eyeo" size={24} color="black" />
                         </TouchableOpacity>
@@ -98,14 +99,20 @@ const styles = StyleSheet.create({
     flex: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        color: "#fff"
     },
     logoContainer: {
         flex: 1,
-        flexDirection: "row",
-        justifyContent: "space-around",
+        position: "absolute",
+        flexDirection: "column",
+        justifyContent: "space-between",
         backgroundColor: 'rgba(11, 56, 82, 0.3)',
-        paddingTop: Constants.statusBarHeight
+        paddingTop: Constants.statusBarHeight + 20,
+        height: Dimensions.get('window').height,
+        width: Dimensions.get('window').width,
+        padding: 10,
+        paddingBottom: 50,
     },
     logo: {
         width: 100,
@@ -114,6 +121,5 @@ const styles = StyleSheet.create({
     textStyle: {
         fontSize: 20,
         color: '#fff',
-        textAlign: 'center',
     },
 });

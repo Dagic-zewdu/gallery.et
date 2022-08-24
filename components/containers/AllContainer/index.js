@@ -8,7 +8,7 @@ export default function AllContainer({ children, header = true, title, onScrollE
   return (
     <View style={styles.container}>
       {header && <Header title={title} />}
-      <ScrollView onScroll={(event) => {
+      <ScrollView nestedScrollEnabled onScroll={(event) => {
         if (handleInfinityScroll(event)) {
           onScrollEnd()
         }
