@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { event } from 'react-native-reanimated';
 import { useSelector } from 'react-redux';
 import AnimatedImage from '../animated-image';
 
@@ -21,16 +23,26 @@ const HomeContainer = (props) => {
             return setIndex(s => (s + 1))
         }
     }
+    const changeToPrev = () => {
+        if (index) {
+            return setIndex(data.length - 1)
+        }
+        return setIndex(index - 1)
+    }
     useEffect(() => {
         if (data.length)
             setImage(s => (data[index]))
     }, [index, data])
 
     return (
-        <AnimatedImage uri={image?.fileurl}
-            tags={image?.tags?.join(",")}
-            onStop={(id) => changeImage(id)}
-            title={image?.title} id={image?._id} />
+        <ScrollView nestedScrollEnabled
+            onScroll={ }
+        >
+            <AnimatedImage uri={image?.fileurl}
+                tags={image?.tags?.join(",")}
+                onStop={(id) => changeImage(id)}
+                title={image?.title} id={image?._id} />
+        </ScrollView >
     );
 }
 

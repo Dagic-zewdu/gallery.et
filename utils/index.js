@@ -8,3 +8,17 @@ export function handleInfinityScroll(event) {
 }
 
 export const Donothing = () => { }
+
+export const handleScrollUpdown = (event, scrollUp = () => { }, scrollDown = () => { }) => {
+    const currentYPosition = event.nativeEvent.contentOffset.y
+    const oldPosition = scrollYRef.current
+
+    if (oldPosition < currentYPosition) {
+        // we scrolled down
+        scrollDown()
+    } else {
+        // we scrolled up
+        scrollDown()
+    }
+    scrollYRef.current = currentYPosition
+}

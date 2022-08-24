@@ -14,7 +14,7 @@ const Home = () => {
   const { gallery } = useSelector(state => state)
   const { loading, error } = gallery
   return (
-    <AllContainer header={false}>
+    <AllContainer header={false} ScrollView={false}>
       <HomeContainer />
     </AllContainer>
   );
