@@ -41,7 +41,7 @@ const HomeContainer = (props) => {
             setImage(s => (data[index]))
     }, [index, data])
     const scrollYRef = useRef(0)
-    console.log(index)
+
     return (
         <ScrollView nestedScrollEnabled
             onScroll={event => {
